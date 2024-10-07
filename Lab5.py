@@ -7,25 +7,25 @@
 
 # Function to check if a number is prime
 def is_prime(n):
-    # Prime numbers are greater than 1
-    if n < 2:
+    if n < 2:  # Numbers less than 2 are not prime (including 1)
         return False
-    # Check for divisibility from 2 to n-1
-    for i in range(2, n):
-        if n % i == 0:  # If divisible by any number other than 1 and itself, it is not prime
+    for i in range(2, int(n ** 0.5) + 1):  # Check divisibility up to the square root of n
+        if n % i == 0:
             return False
     return True
 
-# Main function to get input and print prime numbers
+# Main function to get input and print prime numbers, also including 1 in the output
 def main():
-    # Prompt user for starting and ending numbers
+    # Prompt the user for starting and ending numbers
     start = int(input("Starting Number: "))
     end = int(input("Ending Number: "))
 
-    # Print prime numbers in the given range inclusively
+    # Iterate over the range and print numbers
     for num in range(start, end + 1):
-        if is_prime(num):
+        if num == 1:  # Special case to include 1 in the output
+            print(1)
+        elif is_prime(num):  # Only print if the number is prime
             print(num)
 
-# Call the main function
+# Call the main function to execute the program
 main()
